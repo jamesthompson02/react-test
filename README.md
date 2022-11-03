@@ -2,7 +2,11 @@
 
 ## Project Goal
 
-Despite the name of the repository, this 
+Despite the name of the repository, this project in its current form is the front end of a todo app. The user is able to add and edit tasks as they see fit. Moreover, they can either delete or mark a task as complete when they want. 
+
+This project uses React and Redux as well as some supplementary node packages like react-paginate. 
+
+A long-term stretch goal would be to convert this project into a full stack web application by adding authentication and authorisation (this would require both a proper back end as well as some sort of a database ) and then to deploy it.
 
 
 ## Installation and Usage
