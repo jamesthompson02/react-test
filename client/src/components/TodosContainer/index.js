@@ -43,7 +43,7 @@ const TodosContainer = () => {
     // }, [])
 
     const [pageCount, setPageCount] = useState(0);
-    const tasksPerPage = 5;
+    const tasksPerPage = 3;
     
    
    const tasksBrowsedThrough = pageCount * tasksPerPage;
@@ -61,7 +61,9 @@ const TodosContainer = () => {
     .slice(tasksBrowsedThrough, (tasksBrowsedThrough + tasksPerPage))
     .map(todo => {
         const newKey = newKeyGenerator();
-        return <Todo key={newKey} task={todo.task} id={todo.id} />
+        return <Todo key={newKey} task={todo.task} id={todo.id} 
+               deadlineDate={todo.deadlineDate} deadlineTime={todo.deadlineTime}
+               />
         
     })
     

@@ -32,13 +32,13 @@ Browser should automatically open to the default `localhost:3000/`
 - [x] Ensured that even after the user refreshes the page the tasks that have been added are still on the page through using localStorage to store info related to added tasks.
 - [x] Users have the option of deleting, editing and completing tasks through clicking various buttons which will either update the task or delete it.
 - [x] Added modals for both adding and editing tasks.
+- [x] Offer the user the option of picking a date and time for the task to be completed.
 
 
 ### Challenges to be completed
 
 - [] Improving the appearance of the UI since the CSS is very minimal as of right now.
-- [] Offer the user the option of picking a date and time for the task to be completed.
-- [] Using the current time and date to calculate the days, hours, minutes and seconds left until the task has to be completed - assumes user has selected both date and time.
+- [] Using the current time and date to calculate the days, hours, minutes and seconds left until the task has to be completed - assumes user has selected at least the date that the task has to be finished by.
 - [] Building some kind of timer component
 - [] Turning this into a full stack application by adding both authentication and authorisation.
 

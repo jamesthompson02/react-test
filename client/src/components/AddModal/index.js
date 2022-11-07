@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, changeAddModalDisplay } from '../../actions'; 
 import Btn from '../Btn';
 import './style.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-// Test commit
 
 const AddModal = () => {
 
     const addModalInput = useRef();
+    const timeInput = useRef();
     const [ addModalInputValue, setInputValue ] = useState("");
 
     const dispatch = useDispatch();
@@ -21,7 +23,9 @@ const AddModal = () => {
 
     const hideAddModal = () => {
         dispatch(changeAddModalDisplay("none"));
-        return setInputValue("");
+        setInputValue("");
+        setStartDate(null);
+        return setDeadlineTime("");
     }
 
     const addATodo = () => {
@@ -30,18 +34,53 @@ const AddModal = () => {
         } else {
             const newTime = new Date();
             const newTask = addModalInput.current.value;
-            const todo = {
+            let newDeadlineDate;
+            let newDeadlineTime;
+            if (startDate) {
+                newDeadlineDate = startDate;
+            } else {
+                newDeadlineDate = null;
+            }
+            if (deadlineTime && startDate) {
+                newDeadlineTime = deadlineTime;
+
+            } else if (!startDate && deadlineTime){
+                newDeadlineTime = "";
+            } else if(startDate && !deadlineTime) {
+                newDeadlineTime = "23:59"
+            } else {
+                newDeadlineTime = "";
+            }
+             const todo = {
                 id: newTime,
-                task: newTask 
+                task: newTask,
+                deadlineDate: newDeadlineDate,
+                deadlineTime: newDeadlineTime
             }
             dispatch(addTodo(todo));
             hideAddModal();
             return setInputValue("");
 
         }
-        
+    }
+
+    const [startDate, setStartDate] = useState(null);
+
+    const [deadlineTime, setDeadlineTime] = useState("");
+
+    const datePickerValue = () => {
+        if (startDate) {
+            return new Date(startDate)
+        } else {
+            return null
+        }
+    }
 
 
+    const setNewTime = () => {
+        let newTime = timeInput.current.value;
+        console.log(newTime);
+        return setDeadlineTime(newTime);
     }
 
     return (
@@ -49,8 +88,29 @@ const AddModal = () => {
             <div className='addModal-container'>
                 <h2>Add a Task</h2>
                 <textarea ref={addModalInput} type="text" value={addModalInputValue} onChange={changeInputValue} 
-                placeholder="Enter a task..."></textarea>
-                <footer>
+                placeholder="Enter a task..." className='task-input'></textarea>
+                <div>
+                    <DatePicker 
+                    selected={datePickerValue()}
+                    onChange={date => setStartDate(date.toISOString())}
+                    dateFormat="dd/MM/yyyy"
+                    minDate={new Date()} 
+                    isClearable
+                    placeholderText='Click to choose a deadline date (optional)...'
+                    className='datepicker-input'
+                    />
+
+                </div>
+                <div className='time-input'>
+                    <input 
+                      ref={timeInput}
+                      value={deadlineTime} 
+                      type="time"
+                      format="hh:mm"
+                      onChange={setNewTime}
+                    />
+                </div>
+                <footer className='btn-container'>
                     <Btn text="Add task" handleClick={addATodo} />
                     <Btn text="Cancel" handleClick={hideAddModal} />
                 </footer>

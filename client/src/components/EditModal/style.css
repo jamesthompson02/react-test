@@ -11,8 +11,8 @@
 }
 
 .editModal-container {
-    width: 25%;
-    height: 25%;
+    width: 35%;
+    height: 40%;
     border-radius: 15px;
     display: flex;
     flex-direction: column;

@@ -11,10 +11,32 @@
 }
 
 .addModal-container {
-    width: 25%;
-    height: 25%;
+    width: 35%;
+    height: 35%;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid black;
+    background-color: lightgray;
+}
+
+.task-input {
+    margin-bottom: 1rem;
+    width: 275px;
+    height: 1.5rem;
+}
+
+.datepicker-input {
+    width: 275px;
+    height: 1.5rem;
+    border: 1px solid black;
+}
+
+.time-input {
+    margin: 1rem 0;
+}
+
+.btn-container {
+    margin: 1rem 0;
 }
