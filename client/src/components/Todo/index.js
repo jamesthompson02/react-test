@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteTodo, updateTodo } from '../../actions'; 
 import EditModal from '../EditModal';
 import './style.css';
+import Timer from '../Timer';
 
 const Todo = ({task, id, deadlineDate, deadlineTime}) => {
 
@@ -74,6 +75,7 @@ const Todo = ({task, id, deadlineDate, deadlineTime}) => {
                 {task}
                 {deadlineDateText()}
                 {deadlineTimeText()}
+                <Timer deadlineDate={deadlineDate} deadlineTime={deadlineTime} />
             </div>
             <div>
                 <Btn classname="fa-solid fa-trash" handleClick={deleteTodo1}/>

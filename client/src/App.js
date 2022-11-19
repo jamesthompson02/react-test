@@ -16,16 +16,16 @@ function App() {
     return dispatch(changeAddModalDisplay("flex"))
   }
 
-  useEffect(() => {
-    if (todos.length > 0) {
-      todos.forEach(todo => {
-        console.log(todo);
-      })
-    } else {
-      console.log(todos.length);
-    }
+  // useEffect(() => {
+  //   if (todos.length > 0) {
+  //     todos.forEach(todo => {
+  //       console.log(todo);
+  //     })
+  //   } else {
+  //     console.log(todos.length);
+  //   }
 
-  }, [todos])
+  // }, [todos])
 
   return (
     <div style={{margin: 0}}>
