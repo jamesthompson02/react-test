@@ -25,7 +25,7 @@ const Timer = ({deadlineDate, deadlineTime}) => {
 
     useEffect(() => {
         if (deadlineDate && deadlineTime) {
-            setTimeout(() => {
+            const calculateEverything = setTimeout(() => {
                 let numOfDays = calculateDaysRemaining();
                 let numOfHours = calculateHoursRemaining();
                 let numOfMinutes = calculateMinutesRemaining();
@@ -36,6 +36,7 @@ const Timer = ({deadlineDate, deadlineTime}) => {
                 updateSeconds(numOfSeconds);
 
             }, 1000)
+            return () => clearTimeout(calculateEverything);
 
         }
 
