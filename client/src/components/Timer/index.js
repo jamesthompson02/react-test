@@ -152,11 +152,20 @@ const Timer = ({deadlineDate, deadlineTime}) => {
 
    
     if (deadlineDate && deadlineTime) {
-        return (
-        <>
-            <p>There are {updateRemainingDays} days {updateRemainingHours} hours {updateRemainingMinutes} minutes and {updateRemainingSeconds} seconds left </p>
-        </>
-    )};
+        if ((updateRemainingDays !== "" && updateRemainingDays !== 0) || (updateRemainingHours !== "" && updateRemainingHours !== 0)
+        || (updateRemainingMinutes !== "" && updateRemainingMinutes !== 0) || (updateRemainingSeconds !== "" && updateRemainingSeconds !== 0)) {
+            return (
+                <>
+                    <p>There are {updateRemainingDays} days {updateRemainingHours} hours {updateRemainingMinutes} minutes and {updateRemainingSeconds} seconds left </p>
+                </>
+            )
+
+        }  else {
+            return (
+                <p>Deadline has passed</p>
+            )
+        }
+    };
 }
 
 export default Timer;
